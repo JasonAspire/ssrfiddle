@@ -6,7 +6,7 @@ const Home = () => {
    
     <div> I'm the very best  component</div>
     <button onClick={
-        console.log("woo")
+     () =>    console.log("woo")
 }>
     Press me! </button>
      </div>

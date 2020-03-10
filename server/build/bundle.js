@@ -7058,9 +7058,9 @@ app.get('/', function (req, res) {
 
     var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
 
-    var html = '\n    <html>\n    <head></head>\n    <body> <div id="root">\n    ' + content + ' </div>\n    <script src="bundle.js"></script>\n    </body>\n    </html>\n    ';
+    var html = '\n    <html>\n    <head></head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script src="bundle.js"></script>\n        </body>\n    </html>\n    ';
 
-    res.send(content);
+    res.send(html);
 });
 
 app.listen(3000, function () {
@@ -22727,7 +22727,7 @@ module.exports = camelize;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(15);
@@ -22737,20 +22737,22 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home() {
-    return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(
-            "div",
-            null,
-            " I'm the very best  component"
-        ),
-        _react2.default.createElement(
-            "button",
-            { onClick: console.log("woo") },
-            "Press me! "
-        )
-    );
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "div",
+      null,
+      " I'm the very best  component"
+    ),
+    _react2.default.createElement(
+      "button",
+      { onClick: function onClick() {
+          return console.log("woo");
+        } },
+      "Press me! "
+    )
+  );
 };
 
 exports.default = Home;
