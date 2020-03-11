@@ -14,4 +14,4 @@ const config= {
 
 }
 
-module.exports = merger(baseConfig, config)
+module.exports = merge(baseConfig, config)
