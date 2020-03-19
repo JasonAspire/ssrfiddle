@@ -201,6 +201,12 @@ var _createStore = __webpack_require__(14);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
+var _reactRouterConfig = __webpack_require__(18);
+
+var _Routes = __webpack_require__(11);
+
+var _Routes2 = _interopRequireDefault(_Routes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -209,9 +215,10 @@ app.use(_express2.default.static('public'));
 
 app.get('*', function (req, res) {
     var store = (0, _createStore2.default)();
+
+    console.log((0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path));
+
     res.send((0, _renderer2.default)(req, store));
-    //Lome logic to initialize and
-    // load data into the store
 });
 
 app.listen(3000, function () {
@@ -259,6 +266,8 @@ var _Routes = __webpack_require__(11);
 
 var _Routes2 = _interopRequireDefault(_Routes);
 
+var _reactRouterConfig = __webpack_require__(18);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (req, store) {
@@ -268,7 +277,11 @@ exports.default = function (req, store) {
         _react2.default.createElement(
             _reactRouterDom.StaticRouter,
             { location: req.path, context: {} },
-            _react2.default.createElement(_Routes2.default, null)
+            _react2.default.createElement(
+                'div',
+                null,
+                (0, _reactRouterConfig.renderRoutes)(_Routes2.default)
+            )
         )
     ));
 
@@ -308,14 +321,15 @@ var _UsersList2 = _interopRequireDefault(_UsersList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function () {
-    return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: _UsersList2.default })
-    );
-};
+exports.default = [{
+    path: '/',
+    component: _Home2.default,
+    exact: true
+}, {
+    path: '/users',
+    component: _UsersList2.default
+
+}];
 
 /***/ }),
 /* 12 */
@@ -491,6 +505,12 @@ exports.default = function () {
 
     }
 };
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-config");
 
 /***/ })
 /******/ ]);
