@@ -9,11 +9,8 @@ class UsersList extends Component  {
     }
 
     renderUsers(){
-        console.log(this.props)
         return this.props.users.map( user  =>{
-            return (<li key={users.id}>
-                {user.name}
-            </li>)
+            return <li key={users.id}>{user.name}</li>
         })
     }
     render () {
@@ -30,8 +27,14 @@ UsersList.defaultProps ={
 }
 
 function mapStateToProps(state) {
-    console.log('Stats users' + state.users)
     return {users: state.users}
 }
+
+function loadData( store) {
+    console.log('this is the store' + store)
+  return store.dispatch(fetchUsers())
+}
+
+export { loadData};
 
 export default connect(mapStateToProps, {fetchUsers})(UsersList)

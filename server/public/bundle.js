@@ -8656,7 +8656,7 @@ function verifyPlainObject(value, displayName, methodName) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.fetchUsers = exports.FETCH_USERS = undefined;
 
@@ -8670,37 +8670,37 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var FETCH_USERS = exports.FETCH_USERS = 'fetch_users';
 var fetchUsers = exports.fetchUsers = function fetchUsers() {
-    return function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-            var res;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return _axios2.default.get('http://react-ssr-api.herokuapp.com/users');
+  return function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
+      var res;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _axios2.default.get('http://react-ssr-api.herokuapp.com/users');
 
-                        case 2:
-                            res = _context.sent;
+            case 2:
+              res = _context.sent;
 
 
-                            dispatch({
-                                type: FETCH_USERS,
-                                payload: res
-                            });
+              dispatch({
+                type: FETCH_USERS,
+                payload: res
+              });
 
-                        case 4:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, undefined);
-        }));
+            case 4:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, undefined);
+    }));
 
-        return function (_x) {
-            return _ref.apply(this, arguments);
-        };
-    }();
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
 };
 
 /***/ }),
@@ -9011,21 +9011,21 @@ var _reducers2 = _interopRequireDefault(_reducers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//Start point for the client side application
+// Startup point for the client side application
 var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
 _reactDom2.default.hydrate(_react2.default.createElement(
-    _reactRedux.Provider,
-    { store: store },
+  _reactRedux.Provider,
+  { store: store },
+  _react2.default.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
     _react2.default.createElement(
-        _reactRouterDom.BrowserRouter,
-        null,
-        _react2.default.createElement(
-            'div',
-            null,
-            (0, _reactRouterConfig.renderRoutes)(_Routes2.default)
-        )
+      'div',
+      null,
+      (0, _reactRouterConfig.renderRoutes)(_Routes2.default)
     )
+  )
 ), document.querySelector('#root'));
 
 /***/ }),
@@ -38147,8 +38147,6 @@ var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(162);
-
 var _Home = __webpack_require__(454);
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -38164,9 +38162,9 @@ exports.default = [{
     component: _Home2.default,
     exact: true
 }, {
+    loadData: _UsersList.loadData,
     path: '/users',
     component: _UsersList2.default
-
 }];
 
 /***/ }),
@@ -38217,6 +38215,7 @@ exports.default = Home;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.loadData = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -38253,7 +38252,6 @@ var UsersList = function (_Component) {
     }, {
         key: 'renderUsers',
         value: function renderUsers() {
-            console.log(this.props);
             return this.props.users.map(function (user) {
                 return _react2.default.createElement(
                     'li',
@@ -38286,10 +38284,15 @@ UsersList.defaultProps = {
 };
 
 function mapStateToProps(state) {
-    console.log('Stats users' + state.users);
     return { users: state.users };
 }
 
+function loadData(store) {
+    console.log('this is the store' + store);
+    return store.dispatch((0, _actions.fetchUsers)());
+}
+
+exports.loadData = loadData;
 exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UsersList);
 
 /***/ }),
