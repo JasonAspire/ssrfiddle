@@ -5,6 +5,7 @@ import { StaticRouter } from 'react-router-dom';
 import {Provider } from 'react-redux'
 import Routes from '../client/Routes';
 import { renderRoutes} from 'react-router-config'
+import serliaze from 'serialize-javascript'
 export default (req, store) =>{
     const content = renderToString(
     <Provider store={store}><StaticRouter location={req.path} context={{}}>
@@ -18,7 +19,7 @@ export default (req, store) =>{
         <body>
             <div id="root">${content}</div>
             <script src="bundle.js"></script>
-            <script> window.INITIAL_STATE  = ${JSON.stringify(store.getState())}
+            <script> window.INITIAL_STATE  = ${serliaze(store.getState())}
             </script>
         </body>
     </html>

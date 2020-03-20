@@ -38729,8 +38729,7 @@ exports.default = [_extends({}, _HomePage2.default, {
     path: '/',
     exact: true
 }), _extends({}, _UsersListPage2.default, {
-    path: '/users',
-    component: _UsersListPage2.default
+    path: '/users'
 })];
 
 /***/ }),

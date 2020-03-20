@@ -106,8 +106,7 @@ exports.default = [_extends({}, _HomePage2.default, {
     path: '/',
     exact: true
 }), _extends({}, _UsersListPage2.default, {
-    path: '/users',
-    component: _UsersListPage2.default
+    path: '/users'
 })];
 
 /***/ }),
@@ -395,6 +394,10 @@ var _Routes2 = _interopRequireDefault(_Routes);
 
 var _reactRouterConfig = __webpack_require__(1);
 
+var _serializeJavascript = __webpack_require__(19);
+
+var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (req, store) {
@@ -412,7 +415,7 @@ exports.default = function (req, store) {
         )
     ));
 
-    return '\n    <html>\n    <head></head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script src="bundle.js"></script>\n            <script> window.INITIAL_STATE  = ' + JSON.stringify(store.getState()) + '\n            </script>\n        </body>\n    </html>\n    ';
+    return '\n    <html>\n    <head></head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script src="bundle.js"></script>\n            <script> window.INITIAL_STATE  = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n            </script>\n        </body>\n    </html>\n    ';
 };
 
 /***/ }),
@@ -510,6 +513,12 @@ exports.default = function () {
 
     }
 };
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+module.exports = require("serialize-javascript");
 
 /***/ })
 /******/ ]);
