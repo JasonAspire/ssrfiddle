@@ -1,8 +1,8 @@
 import {FETCH_CURRENT_USER} from '../actions'
 
-export default (state= null, action) =>{
+export default function (state= null, action){
     
-    switch(action.type) {
+    switch(action.type){
         case FETCH_CURRENT_USER:
             console.log(action.payload.data)
             return action.payload.data || false;

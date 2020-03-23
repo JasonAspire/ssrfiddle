@@ -133,13 +133,12 @@ var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
               res = _context2.sent;
 
 
-              console.log(res);
               dispatch({
                 type: FETCH_CURRENT_USER,
                 payload: res
               });
 
-            case 5:
+            case 4:
             case 'end':
               return _context2.stop();
           }
@@ -480,7 +479,7 @@ var Header = function Header(_ref) {
     var auth = _ref.auth;
 
 
-    console.log(auth);
+    console.log('My auth status is', auth);
     var authButton = auth ? _react2.default.createElement(
         'a',
         { href: '/api/logout' },
@@ -663,7 +662,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = (0, _redux.combineReducers)({
     users: _usersReducer2.default,
-    auth: _authReducer2.default
+    auths: _authReducer2.default
 });
 
 /***/ }),
@@ -703,8 +702,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _actions = __webpack_require__(1);
-
 exports.default = function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     var action = arguments[1];
@@ -718,6 +715,8 @@ exports.default = function () {
             return state;
     }
 };
+
+var _actions = __webpack_require__(1);
 
 /***/ }),
 /* 23 */,
