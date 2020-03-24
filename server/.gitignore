@@ -1,6 +1,6 @@
 ./server/node_modules
 
-/public
-/build
+./public/bundle.js
+./build/bundle.js
 
 node_modules
