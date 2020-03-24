@@ -1,14 +1,12 @@
 import React from 'react'
 
 const Home = () => {
-    return (<div>
+    return (<div className='center-align' style={{ marginTop : '200px'}}>
 
    
-    <div> I'm the very best  component</div>
-    <button onClick={
-     () =>  console.log("woo")
-}>
-    Press me! </button>
+  <h3> Welcome</h3>
+  <div>Checkout these awesome features</div>
+   
      </div>
     )
 }
