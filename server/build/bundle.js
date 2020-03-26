@@ -321,6 +321,9 @@ app.get('*', function (req, res) {
     Promise.all(promises).then(function () {
         var context = {};
         var content = (0, _renderer2.default)(req, store, context);
+        if (context.url) {
+            return res.redirect(301, context.url);
+        }
         if (context.notFound) {
             res.status(404);
         }
@@ -679,13 +682,11 @@ var AdminsListPage = function (_Component) {
     }, {
         key: 'renderAdmins',
         value: function renderAdmins() {
-            this.props.admins.map(function (admin) {
-                console.log(admin);
+            return this.props.admins.map(function (admin) {
                 return _react2.default.createElement(
                     'li',
                     { key: admin.id },
-                    admin.name,
-                    ' hi'
+                    admin.name
                 );
             });
         }

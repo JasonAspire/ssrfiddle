@@ -40029,13 +40029,11 @@ var AdminsListPage = function (_Component) {
     }, {
         key: 'renderAdmins',
         value: function renderAdmins() {
-            this.props.admins.map(function (admin) {
-                console.log(admin);
+            return this.props.admins.map(function (admin) {
                 return _react2.default.createElement(
                     'li',
                     { key: admin.id },
-                    admin.name,
-                    ' hi'
+                    admin.name
                 );
             });
         }
